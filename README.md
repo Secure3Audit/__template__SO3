@@ -11,36 +11,45 @@ Please read the **[Issue Submission Guidelines](./doc/IssueSubmissionGuidelines.
 ------
 
 ### Project Introduction
-The client wants to have extra attention on the `TBD` contract correctness and security.
-
-Please submit issues for `TBD` contract first.
+A fair-launch Web3 social farming game starting on Arbitrum. 
 
 Below are the project websites and docs 
-- TBD-Link
+- https://so3.me/
+- https://twitter.com/0xSO3
 
 ### Project Dependencies
-- ERC 721
-- ERC 1155
-- Chainlink VRF
-- Merkle ECDSA Cryptography
+
+- ERC 20
+- UUPS 
 
 ### Audit Scope
-Audit scope **ONLY** includes files listed in the "Code Statistics" section below. 
+
+Audit scope ONLY includes files listed in the "Code Statistics" section below.
 
 **Code Statistics**:
+
 ```
-Original repo commit: `TBD-commit-long-hash` 
+SO3 - Original repo commit: `111ce17249fc1ccec9794e7ed6930cd1a9762802` 
 
---------------------------------------------------------------------------------------------
-File                                                     blank        comment           code
---------------------------------------------------------------------------------------------
-contracts/xxxxxxxxx.sol                                     36             56            199
---------------------------------------------------------------------------------------------
-SUM:                                                       318            173           1594
---------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------
+File                                        blank        comment           code
+------------------------------------------------------------------------------------------
+src/SO3Market.sol                              53             20            162
+src/SO3Chef.sol                                37              5            142
+src/Vars.sol                                    2              2             25
+src/SO3.sol                                     6              1             19
+src/UUPSUpgradeableExp.sol                      5             10             18
+src/Counter.sol                                 3              1             10
+src/interfaces/IChef.sol                        3              1              7
+src/interfaces/IMintPool.sol                    1              1              4
+------------------------------------------------------------------------------------------
+SUM:                                          110             41            387
+-------------------------------------------------------------------------------------------
+File                                         blank        comment           code
+-------------------------------------------------------------------------------------------
+src/SO3.sol                                      6              1             19
+-------------------------------------------------------------------------------------------
 ```
 
 ### Additional Documents
-The additional documents provided by the client are under `doc` directory
-
+NA
