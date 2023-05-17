@@ -1,0 +1,65 @@
+name: Secure3 Audit Finding Submission Form
+description: File a bug report
+title: "Change this subject - Reentrancy risk in `sample` contract `test` function "
+assignees:
+  - tedsecure3
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill all the fields in this bug report
+  - type: textarea
+    id: description
+    attributes:
+      label: description
+      description: description of the findings
+      placeholder: "Because the value deduction is executed after the `transfer()` call, which with ERC777 hook function there can be callback to this test function ... \n\nThe impact is that the malicious contract can ...\n\nConsider below POC contract\n```solidity\ncontract ERC777Hack {\n    function reenter() external {\n        helper.transfer(address(baseToken), msg.sender, amount);\n    }\n    ...\n}\n```"
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: recommendation
+      description: recommendation of the fix
+      placeholder: "Use the Checks-Effects-Interactions best practice and make all state changes before calling external contracts. \nAlso, consider using function modifiers such as `nonReentrant` from Reentrancy Guard to prevent re-entrancy at the contract level.\n\nConsider below fix in the `sample.test()` function\n```solidity\nval = newVal;\ntransfer call...\n```\n"
+    validations:
+      required: true
+  - type: textarea
+    id: locations
+    attributes:
+      label: locations
+      description: locations of the code
+      placeholder: "- code/contracts/sample.sol#L9-L18\n- code/contracts/sample.sol#L36"
+    validations:
+      required: true     
+  - type: dropdown
+    id: severity
+    attributes:
+      label: severity
+      multiple: false
+      options:
+        - Informational
+        - Low
+        - Medium
+        - Critical
+  - type: dropdown
+    id: category
+    attributes:
+      label: category
+      multiple: false
+      options:
+        - Logical
+        - Privilege Related
+        - Language Specific
+        - Code Style
+        - Gas Optimization
+        - Governance Manipulation
+        - Reentrancy
+        - Signature Forgery or Replay
+        - DOS
+        - Oracle Manipulation
+        - Flash Loan Attacks
+        - Integer Overflow and Underflow
+        - Weak Sources of Randomness
+        - Write to Arbitrary Storage Location
+        - Race condition

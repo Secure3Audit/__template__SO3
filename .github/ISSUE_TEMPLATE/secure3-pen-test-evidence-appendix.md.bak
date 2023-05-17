@@ -1,0 +1,23 @@
+---
+name: USE THIS ONE -> Secure3 Pen Test Evidence Appendix
+about: evidence template submitting Pen Test findings
+title: Change this subject - Tested xxx - PASSED
+labels: ''
+assignees: tedsecure3
+
+---
+
+### description:
+Tested `xxx` common vulnerability on IP/URL and no issues found
+
+```text
+log.....
+```
+
+A screenshot:
+
+the image here
+
+### locations:
+- IP/Hostname/URL example1
+- IP/Hostname/URL example2 
