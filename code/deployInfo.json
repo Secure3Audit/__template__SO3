@@ -1,0 +1,40 @@
+{
+  "goerli": {
+    "so3": "0xA0a121C77a3317Cf31B14b5a3089C2DAc70b5c3B",
+    "treasury": "0xA56B4F0C7622BD076C2bA48B17d1E8D3FBf5303E",
+    "config": {
+      "rewardPerBlock": 2.28310502e+23,
+      "mintPrice": "0.1"
+    },
+    "chef": "0xc44D60Da3ed467227C81BFAAC31b882880Cc13e8",
+    "market": "0xF3c6B66b2E85fEb494Ac2ce9D8013dC82614473D",
+    "chefImpl": "0x33F53D9Ffb708a4001D28566481f2Bd25FACa250",
+    "marketImpl": "0x26262A055Ac19b95708E5802Fb317955393fa931"
+  },
+  "arbtest_old": {
+    "chain": "421613",
+    "so3": "0xA0a121C77a3317Cf31B14b5a3089C2DAc70b5c3B",
+    "treasury": "0xA56B4F0C7622BD076C2bA48B17d1E8D3FBf5303E",
+    "config": {
+      "rewardPerBlock": "100000000000000000000",
+      "mintPrice": "0.1"
+    },
+    "chefImpl": "0xaBB9ADE0BC8C132d4F75c15538370E66A0734518",
+    "chef": "0xc44D60Da3ed467227C81BFAAC31b882880Cc13e8",
+    "market": "0xF3c6B66b2E85fEb494Ac2ce9D8013dC82614473D",
+    "marketImpl": "0x597BF56E87fE8cc28D9B1Fb4946E92bF85b5D18b"
+  },
+  "arbtest": {
+    "chain": "421613",
+    "so3": "0xA0a121C77a3317Cf31B14b5a3089C2DAc70b5c3B",
+    "treasury": "0xA56B4F0C7622BD076C2bA48B17d1E8D3FBf5303E",
+    "config": {
+      "rewardPerBlock": "100000000000000000000",
+      "mintPrice": "0.01"
+    },
+    "chefImpl": "0x48Bd3b406AFeB01b8a0d45C235d7698B8a78dC92",
+    "chef": "0xdC893D34Ca3DF65EA06E9D78EBE2f4ec5ddF15dC",
+    "market": "0xDcFe513B7836B72Ad624541806E338E7Bd722A22",
+    "marketImpl": "0x1b9ACc886a712035c62F5261D61F00A0B23C420D"
+  }
+}

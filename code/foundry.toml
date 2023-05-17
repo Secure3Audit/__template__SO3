@@ -1,0 +1,20 @@
+[profile.default]
+gas_price = 16
+libs = ['lib']
+out = 'out'
+src = 'src'
+
+[invariant]
+call_override = false
+depth = 15
+dictionary_weight = 80
+fail_on_revert = false
+include_push_bytes = true
+include_storage = true
+runs = 2000
+
+[fmt]
+bracket_spacing = false
+line_length = 120
+tab_width = 4
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
