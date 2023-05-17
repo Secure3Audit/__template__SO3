@@ -1,0 +1,120 @@
+➜  so3-sc git:(main) forge test --gas-report
+[⠔] Compiling...
+[⠒] Compiling 1 files with 0.8.17
+[⠘] Solc 0.8.17 finished in 2.12s
+Compiler run successful
+
+Running 2 tests for test/Counter.t.sol:CounterTest
+[PASS] testIncrement() (gas: 28356)
+[PASS] testSetNumber(uint256) (runs: 256, μ: 27486, ~: 28342)
+Test result: ok. 2 passed; 0 failed; finished in 23.33ms
+
+Running 18 tests for test/Market.t.sol:MarketTest
+[PASS] testAdminWhenSetChef() (gas: 24014)
+[PASS] testAdminWhenSetEthCap() (gas: 21933)
+[PASS] testAdminWhenSetFeeBP() (gas: 29525)
+[PASS] testAdminWhenSetTreasury(address) (runs: 256, μ: 23732, ~: 23732)
+[PASS] testGrabWhenNotExist() (gas: 16851)
+[PASS] testGrapFine() (gas: 262946)
+[PASS] testGrapWhenAttackAll() (gas: 353511)
+[PASS] testGrapWhenAttackMiner() (gas: 296655)
+[PASS] testGrapWhenAttackOwner() (gas: 288405)
+[PASS] testGrapWhenSelf() (gas: 162690)
+[PASS] testGrapWhenUseBadPrice() (gas: 162586)
+[PASS] testLikeWhenOverflow() (gas: 282444)
+[PASS] testLikeWhenZero() (gas: 178058)
+[PASS] testLikeWithPermit() (gas: 378261)
+[PASS] testMintNormal() (gas: 157678)
+[PASS] testMintWithBadAmount() (gas: 29929)
+[PASS] testMintWithSC() (gas: 17726)
+[PASS] testRepeatMint() (gas: 162252)
+Test result: ok. 18 passed; 0 failed; finished in 35.45ms
+
+Running 5 tests for test/Chef.t.sol:MarketTest
+[PASS] testDepoist() (gas: 73863)
+[PASS] testDepoistWhenBadCaller() (gas: 14746)
+[PASS] testReward() (gas: 397433)
+[PASS] testRewardMax(uint256) (runs: 256, μ: 211756, ~: 211756)
+[PASS] testWithdraw() (gas: 90278)
+Test result: ok. 5 passed; 0 failed; finished in 53.08ms
+| src/SO3.sol:SO3 contract |                 |       |        |       |         |
+|--------------------------|-----------------|-------|--------|-------|---------|
+| Deployment Cost          | Deployment Size |       |        |       |         |
+| 773738                   | 4439            |       |        |       |         |
+| Function Name            | min             | avg   | median | max   | # calls |
+| balanceOf                | 542             | 542   | 542    | 542   | 4       |
+| mint                     | 3002            | 22664 | 24902  | 48802 | 8       |
+| setMaster                | 22669           | 22669 | 22669  | 22669 | 5       |
+| totalSupply              | 363             | 363   | 363    | 363   | 1       |
+
+
+| src/SO3Chef.sol:SO3Chef contract |                 |       |        |        |         |
+|----------------------------------|-----------------|-------|--------|--------|---------|
+| Deployment Cost                  | Deployment Size |       |        |        |         |
+| 631686                           | 2911            |       |        |        |         |
+| Function Name                    | min             | avg   | median | max    | # calls |
+| claim                            | 2681            | 44758 | 38672  | 128980 | 6       |
+| deposit                          | 2303            | 34355 | 48103  | 56103  | 35      |
+| setAgent                         | 20729           | 20729 | 20729  | 20729  | 23      |
+| setRewardPerBlock                | 7367            | 8015  | 8015   | 8664   | 2       |
+| totalDeposits                    | 384             | 384   | 384    | 384    | 1       |
+| unclaimed                        | 1091            | 1091  | 1091   | 1091   | 8       |
+| userInfo                         | 801             | 801   | 801    | 801    | 5       |
+| withdraw                         | 2404            | 9222  | 2404   | 69364  | 10      |
+
+
+| src/SO3Market.sol:SO3Market contract |                 |       |        |        |         |
+|--------------------------------------|-----------------|-------|--------|--------|---------|
+| Deployment Cost                      | Deployment Size |       |        |        |         |
+| 1211049                              | 5891            |       |        |        |         |
+| Function Name                        | min             | avg   | median | max    | # calls |
+| ethCap                               | 318             | 318   | 318    | 318    | 1       |
+| getPower                             | 755             | 755   | 755    | 755    | 2       |
+| grab                                 | 1048            | 44965 | 61440  | 101210 | 7       |
+| like                                 | 19661           | 38358 | 31649  | 68369  | 7       |
+| minerInfo                            | 1504            | 1504  | 1504   | 1504   | 14      |
+| mint                                 | 468             | 95048 | 137807 | 137807 | 16      |
+| setChef                              | 2616            | 5101  | 5101   | 7586   | 2       |
+| setEthCap                            | 2561            | 4995  | 4995   | 7430   | 2       |
+| setFeeBP                             | 2630            | 8288  | 8288   | 13947  | 2       |
+| setTreasury                          | 2680            | 5680  | 5680   | 8680   | 2       |
+| so3Chef                              | 360             | 360   | 360    | 360    | 1       |
+| tradeFeeToMinerBP                    | 385             | 385   | 385    | 385    | 1       |
+| tradeFeeToTreasuryBP                 | 362             | 362   | 362    | 362    | 1       |
+| treasury                             | 426             | 426   | 426    | 426    | 1       |
+
+
+| test/Market.t.sol:AttackMiner contract |                 |     |        |     |         |
+|----------------------------------------|-----------------|-----|--------|-----|---------|
+| Deployment Cost                        | Deployment Size |     |        |     |         |
+| 23475                                  | 147             |     |        |     |         |
+| Function Name                          | min             | avg | median | max | # calls |
+| receive                                | 144             | 144 | 144    | 144 | 2       |
+
+
+| test/Market.t.sol:AttackOwner contract |                 |     |        |     |         |
+|----------------------------------------|-----------------|-----|--------|-----|---------|
+| Deployment Cost                        | Deployment Size |     |        |     |         |
+| 23475                                  | 147             |     |        |     |         |
+| Function Name                          | min             | avg | median | max | # calls |
+| receive                                | 144             | 144 | 144    | 144 | 2       |
+
+
+| test/Market.t.sol:MarketTest contract |                 |     |        |     |         |
+|---------------------------------------|-----------------|-----|--------|-----|---------|
+| Deployment Cost                       | Deployment Size |     |        |     |         |
+| 5694224                               | 28371           |     |        |     |         |
+| Function Name                         | min             | avg | median | max | # calls |
+| receive                               | 55              | 55  | 55     | 55  | 1       |
+
+
+| test/MockToken.sol:MockToken contract |                 |       |        |       |         |
+|---------------------------------------|-----------------|-------|--------|-------|---------|
+| Deployment Cost                       | Deployment Size |       |        |       |         |
+| 684377                                | 3974            |       |        |       |         |
+| Function Name                         | min             | avg   | median | max   | # calls |
+| DOMAIN_SEPARATOR                      | 301             | 301   | 301    | 301   | 6       |
+| mint                                  | 2690            | 21540 | 22590  | 29390 | 6       |
+| nonces                                | 564             | 1230  | 564    | 2564  | 6       |
+| permit                                | 7016            | 30932 | 26916  | 48916 | 6       |
+| transferFrom                          | 2948            | 9021  | 3684   | 20468 | 7       |
